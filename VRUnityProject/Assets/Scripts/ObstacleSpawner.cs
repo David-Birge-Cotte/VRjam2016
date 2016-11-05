@@ -51,7 +51,7 @@ public class ObstacleSpawner : MonoBehaviour {
             {
                 interval = 0;
 
-                int x = Random.Range(0, 6); int y = Random.Range(0, 6);
+				float x = Random.Range(0, 6); float y = Random.Range(0, 6);
                 x /= 4; y /= 4;
                 int handDesignedSitu = Random.Range(0, handDesignedSituations.Count);
 
@@ -62,11 +62,11 @@ public class ObstacleSpawner : MonoBehaviour {
             {
                 for (int i = 0; i < numOfObjectsToSpawn; i++)
                 {
-                    int x = Random.Range(0, 6); int y = Random.Range(0, 6);
+					float x = Random.Range(0, 6); float y = Random.Range(0, 6);
                     x /= 4; y /= 4;
                     int obstNum = Random.Range(0, obstacles.Count);
 
-                    Vector3 spawnPos = transform.position + new Vector3(0, y, x - 2);
+                    Vector3 spawnPos = transform.position + new Vector3(0, y-.5f, x - 0.5f);
                     GameObject instantiatedObstacle = Instantiate(obstacles[obstNum], spawnPos, Quaternion.identity) as GameObject;
 
                     //TODO verify if multiple objects are not in the same spot.
