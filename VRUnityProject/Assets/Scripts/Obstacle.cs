@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Obstacle : MonoBehaviour {
 
-    public TriggerForObstacle[] Triggers;
     public float speed = 1;
 
     private Rigidbody _rb;
@@ -23,16 +22,4 @@ public class Obstacle : MonoBehaviour {
         _rb.MovePosition(transform.position + (movement * Time.deltaTime * speed));
     }
 
-    public bool TestAllTriggers()
-    {
-        bool TestTrig = true;
-
-        for (int i = 0; i < Triggers.Length; i++)
-        {
-            if (Triggers[i].bIsTriggered == false)
-                TestTrig = false;
-        }
-
-        return TestTrig;
-    }
 }
