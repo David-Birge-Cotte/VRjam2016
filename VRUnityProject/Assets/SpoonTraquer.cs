@@ -22,6 +22,10 @@ public class SpoonTraquer : MonoBehaviour {
 		FixedJoint joint = spoon.AddComponent<FixedJoint>();
 		spoon.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		joint.connectedBody = attach.GetComponent<Rigidbody> ();
+
+		yield return null;
+
+		spoon.GetComponent<Spoon> ().Release ();
 	}
 	
 	// Update is called once per frame
