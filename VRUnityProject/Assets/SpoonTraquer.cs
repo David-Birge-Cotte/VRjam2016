@@ -8,8 +8,13 @@ public class SpoonTraquer : MonoBehaviour {
 
 	public Transform content;
 
+	public void AddEgg ()
+	{
+		StartCoroutine (StartEgg ());
+	}
+
 	// Use this for initialization
-	IEnumerator Start () 
+	IEnumerator StartEgg () 
 	{
 		yield return new WaitForSeconds (1f);
 
@@ -26,10 +31,5 @@ public class SpoonTraquer : MonoBehaviour {
 		yield return null;
 
 		spoon.GetComponent<Spoon> ().Release ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

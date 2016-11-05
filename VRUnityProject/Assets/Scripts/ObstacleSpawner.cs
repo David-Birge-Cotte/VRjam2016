@@ -36,7 +36,7 @@ public class ObstacleSpawner : MonoBehaviour {
 
     }
 
-	void Start ()
+	public void StartGame ()
     {
         Initialize();
         StartCoroutine("Spawn");
