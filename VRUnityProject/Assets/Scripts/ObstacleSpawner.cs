@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class ObstacleSpawner : MonoBehaviour {
 
     // To increment ingame
-    private float spawnInterval = 1.5f;
+    private float spawnInterval = 1.2f;
     private int numOfObjectsToSpawn = 1;
-    private int intervalBetweenDesignedSituations = 10;
+    private int intervalBetweenDesignedSituations = 9;
 
     private float speed = 3;
 
@@ -48,19 +48,19 @@ public class ObstacleSpawner : MonoBehaviour {
         //Debug.Log("Niveau 0");
 
         yield return new WaitForSeconds(20);
-        ChangeSettings(3, 1.2f, 1, 9);
+        ChangeSettings(4, 1.0f, 1, 8);
         //Debug.Log("Niveau 1");
 
         yield return new WaitForSeconds(20);
-        ChangeSettings(4, 1f, 2, 8);
+        ChangeSettings(5, 0.9f, 2, 8);
         //Debug.Log("Niveau 2");
 
         yield return new WaitForSeconds(10);
-        ChangeSettings(5, 0.8f, 3, 7);
+        ChangeSettings(6, 0.7f, 3, 7);
         //Debug.Log("Niveau 3");
 
         yield return new WaitForSeconds(10);
-        ChangeSettings(6, 0.6f, 4, 6);
+        ChangeSettings(7, 0.5f, 4, 5);
         //Debug.Log("Niveau 4");
 
         yield return new WaitForSeconds(10);
