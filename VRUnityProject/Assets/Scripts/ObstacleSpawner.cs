@@ -5,11 +5,11 @@ using System.Collections.Generic;
 public class ObstacleSpawner : MonoBehaviour {
 
     // To increment ingame
-    private float spawnInterval = 1f;
+    private float spawnInterval = 1.5f;
     private int numOfObjectsToSpawn = 1;
-    private int intervalBetweenDesignedSituations = 6;
+    private int intervalBetweenDesignedSituations = 10;
 
-    private float speed = 4;
+    private float speed = 3;
 
     private List<GameObject> obstacles;
     private List<GameObject> handDesignedSituations;
@@ -45,17 +45,17 @@ public class ObstacleSpawner : MonoBehaviour {
 
     IEnumerator SuperSale()
     {
-        yield return new WaitForSeconds(5);
-        ChangeSettings(5, 0.8f, 2, 7);
-
         yield return new WaitForSeconds(10);
-        ChangeSettings(6, 0.7f, 3, 6);
-
-        yield return new WaitForSeconds(15);
-        ChangeSettings(7, 0.5f, 4, 5);
+        ChangeSettings(4, 1.2f, 1, 9);
 
         yield return new WaitForSeconds(20);
-        ChangeSettings(8, 0.3f, 5, 4);
+        ChangeSettings(5, 1f, 2, 8);
+
+        yield return new WaitForSeconds(40);
+        ChangeSettings(6, 0.8f, 3, 7);
+
+        yield return new WaitForSeconds(80);
+        ChangeSettings(7, 0.5f, 4, 6);
 
         yield return new WaitForEndOfFrame();
     }
