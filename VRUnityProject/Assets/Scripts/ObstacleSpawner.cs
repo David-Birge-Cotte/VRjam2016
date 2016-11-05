@@ -5,8 +5,8 @@ using System.Collections.Generic;
 public class ObstacleSpawner : MonoBehaviour {
 
     // To increment ingame
-    private float spawnInterval = 3f;
-    private int numOfObjectsToSpawn = 2;
+    private float spawnInterval = 1f;
+    private int numOfObjectsToSpawn = 3;
     private int intervalBetweenDesignedSituations = 5;
 
     private List<GameObject> obstacles;
