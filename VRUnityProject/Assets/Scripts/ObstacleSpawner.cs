@@ -6,8 +6,10 @@ public class ObstacleSpawner : MonoBehaviour {
 
     // To increment ingame
     private float spawnInterval = 1f;
-    private int numOfObjectsToSpawn = 3;
-    private int intervalBetweenDesignedSituations = 5;
+    private int numOfObjectsToSpawn = 1;
+    private int intervalBetweenDesignedSituations = 6;
+
+    private float speed = 4;
 
     private List<GameObject> obstacles;
     private List<GameObject> handDesignedSituations;
@@ -38,6 +40,42 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         Initialize();
         StartCoroutine("Spawn");
+        StartCoroutine("SuperSale");
+    }
+
+    IEnumerator SuperSale()
+    {
+        yield return new WaitForSeconds(5);
+        ChangeSettings(5, 0.8f, 2, 7);
+
+        yield return new WaitForSeconds(10);
+        ChangeSettings(6, 0.7f, 3, 6);
+
+        yield return new WaitForSeconds(15);
+        ChangeSettings(7, 0.5f, 4, 5);
+
+        yield return new WaitForSeconds(20);
+        ChangeSettings(8, 0.3f, 5, 4);
+
+        yield return new WaitForEndOfFrame();
+    }
+
+
+    void ChangeSettings(int speed, float spawnInterval, int numOfObjects, int intervalBetweenSituations)
+    {
+        this.spawnInterval = spawnInterval;
+        this.numOfObjectsToSpawn = numOfObjects;
+        this.intervalBetweenDesignedSituations = intervalBetweenSituations;
+
+        this.speed = speed;
+        
+
+        // Update already spawned Obstacles
+        Obstacle[] obsList = GameObject.FindObjectsOfType<Obstacle>();
+        for (int i = 0; i < obsList.Length; i++)
+        {
+            obsList[i].speed = speed;
+        }
     }
 
     IEnumerator Spawn()
@@ -55,12 +93,13 @@ public class ObstacleSpawner : MonoBehaviour {
                 //x /= 8; y /= 8;
                 int handDesignedSitu = Random.Range(0, handDesignedSituations.Count);
 
-                Vector3 spawnPos = transform.position + new Vector3(0, 0.25f, 0);
+                Vector3 spawnPos = transform.position;
                 GameObject instantiatedObstacle = Instantiate(handDesignedSituations[handDesignedSitu], spawnPos, Quaternion.identity) as GameObject;
+                instantiatedObstacle.GetComponent<Obstacle>().speed = speed;
             }
             else
             {
-                for (int i = 0; i < numOfObjectsToSpawn; i++)
+                for (int i = 0; i < Random.Range(numOfObjectsToSpawn, numOfObjectsToSpawn*2); i++)
                 {
 					float x = Random.Range(0, 6); float y = Random.Range(0, 6);
                     x /= 4; y /= 4;
@@ -68,8 +107,7 @@ public class ObstacleSpawner : MonoBehaviour {
 
                     Vector3 spawnPos = transform.position + new Vector3(0, y-.5f, x - 0.5f);
                     GameObject instantiatedObstacle = Instantiate(obstacles[obstNum], spawnPos, Quaternion.identity) as GameObject;
-
-                    //TODO verify if multiple objects are not in the same spot.
+                    instantiatedObstacle.GetComponent<Obstacle>().speed = speed;
                 }
             }   
             yield return new WaitForEndOfFrame();
