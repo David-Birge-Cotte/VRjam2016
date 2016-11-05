@@ -55,7 +55,7 @@ public class ObstacleSpawner : MonoBehaviour {
                 x /= 4; y /= 4;
                 int handDesignedSitu = Random.Range(0, handDesignedSituations.Count);
 
-                Vector3 spawnPos = transform.position;
+                Vector3 spawnPos = transform.position + new Vector3(0, 1, 0);
                 GameObject instantiatedObstacle = Instantiate(handDesignedSituations[handDesignedSitu], spawnPos, Quaternion.identity) as GameObject;
             }
             else
