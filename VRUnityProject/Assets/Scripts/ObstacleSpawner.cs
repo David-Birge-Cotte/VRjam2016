@@ -45,28 +45,34 @@ public class ObstacleSpawner : MonoBehaviour {
 
     IEnumerator SuperSale()
     {
-        Debug.Log("Niveau 0");
+        //Debug.Log("Niveau 0");
 
         yield return new WaitForSeconds(20);
         ChangeSettings(3, 1.2f, 1, 9);
-        Debug.Log("Niveau 1");
+        //Debug.Log("Niveau 1");
 
         yield return new WaitForSeconds(20);
         ChangeSettings(4, 1f, 2, 8);
-        Debug.Log("Niveau 2");
+        //Debug.Log("Niveau 2");
 
         yield return new WaitForSeconds(10);
         ChangeSettings(5, 0.8f, 3, 7);
-        Debug.Log("Niveau 3");
+        //Debug.Log("Niveau 3");
 
         yield return new WaitForSeconds(10);
         ChangeSettings(6, 0.6f, 4, 6);
-        Debug.Log("Niveau 4");
+        //Debug.Log("Niveau 4");
 
         yield return new WaitForSeconds(10);
-        Debug.Log("BRAVO le veau");
+        //Debug.Log("BRAVO le veau");
 
+        Finish();
         yield return new WaitForEndOfFrame();
+    }
+
+    void Finish()
+    {
+        StopAllCoroutines();
     }
 
 
