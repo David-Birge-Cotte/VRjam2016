@@ -8,9 +8,21 @@ public class SpoonTraquer : MonoBehaviour {
 
 	public Transform content;
 
+	public SteamVR_RenderModel deviceModel;
+
 	public void AddEgg ()
 	{
 		StartCoroutine (StartEgg ());
+	}
+
+
+	void Update ()
+	{
+		var device = SteamVR_Controller.Input((int)deviceModel.index);
+		if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) 
+		{
+			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
+		}
 	}
 
 	// Use this for initialization

@@ -11,10 +11,11 @@ public class MoveToParadise : MonoBehaviour {
 	private float    startTime;
 	private Vector3 startPosition;
 	private bool hastomove = false;
+	public AudioSource audioIntro;
+	public bool hasLaunchIntro = false;
 
-	public void Start (){
-		StartToMove ();
-	}
+	public GameObject firstSpot;
+	public GameObject secondPost;
 
 	// Use this for initialization
 	public void StartToMove () 
@@ -46,6 +47,26 @@ public class MoveToParadise : MonoBehaviour {
 
 			StartCoroutine (StartGame ());
 		}
+	}
+
+	public void StartIntro()
+	{
+		if (hasLaunchIntro == false) 
+		{
+			hasLaunchIntro = true;
+			StartCoroutine (PlayIntro());
+		}
+	}
+
+	IEnumerator PlayIntro ()
+	{
+		firstSpot.SetActive (true);
+		yield return new WaitForSeconds (0.2f);
+		audioIntro.Play ();
+		yield return new WaitForSeconds (23f);
+		secondPost.SetActive (true);
+		yield return new WaitForSeconds (1f);
+		StartToMove ();
 	}
 
 	IEnumerator StartGame ()
