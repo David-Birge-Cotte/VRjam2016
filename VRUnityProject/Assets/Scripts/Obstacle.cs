@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Obstacle : MonoBehaviour {
 
     public float speed = 1;
-
     private Rigidbody _rb;
 
 	void Start ()
