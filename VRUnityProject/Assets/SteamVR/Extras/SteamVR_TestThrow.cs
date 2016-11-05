@@ -19,6 +19,9 @@ public class SteamVR_TestThrow : MonoBehaviour
 	void FixedUpdate()
 	{
 		var device = SteamVR_Controller.Input((int)trackedObj.index);
+
+
+
 		if (joint == null && device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
 		{
 			var go = GameObject.Instantiate(prefab);
