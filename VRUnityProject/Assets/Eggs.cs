@@ -36,6 +36,7 @@ public class Eggs : MonoBehaviour {
 		if (coll.gameObject.layer == 11) 
 		{
 			GameObject.FindObjectOfType<GameOver> ().LooseEgg (index);
+            Debug.Log("Tonnerre !");
 			SetLayer (9);
 			Camera.main.GetComponent<AudioSource>().PlayOneShot(SND_Cloud_Collid_1);
 		}
