@@ -23,6 +23,9 @@ public class SpoonTraquer : MonoBehaviour {
 		{
 			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
 		}
+
+		if (Input.GetKeyDown(KeyCode.S))
+			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
 	}
 
 	// Use this for initialization
