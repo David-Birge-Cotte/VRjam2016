@@ -55,6 +55,10 @@ public class GameOver : MonoBehaviour {
 		looseImage.enabled = !win;
 		hastomove = true;
 
+        // Move to black room ?
+        GameObject.Find("VR character").transform.position = new Vector3(67, 0, 0);
+        Debug.Log("Moved the character to" + GameObject.Find("VR character").transform.position);
+
 
 		GameObject.FindObjectOfType<MoveToParadise> ().EndGame (win);
 		GameObject.FindObjectOfType<ObstacleSpawner> ().EndGame (win);
