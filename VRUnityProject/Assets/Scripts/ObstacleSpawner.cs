@@ -97,10 +97,12 @@ public class ObstacleSpawner : MonoBehaviour {
         yield return new WaitForSeconds(10);
         //Debug.Log("BRAVO le veau");
 
+
+		GameObject.FindObjectOfType<GameOver> ().SpawnEnd ();
+
         Finish();
         yield return new WaitForEndOfFrame();
 
-		GameObject.FindObjectOfType<GameOver> ().SpawnEnd ();
     }
 
     void Finish()
