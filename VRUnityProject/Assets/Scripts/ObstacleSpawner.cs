@@ -5,11 +5,10 @@ using System.Collections.Generic;
 public class ObstacleSpawner : MonoBehaviour {
 
     // To increment ingame
-    private float spawnInterval = 1.2f;
-    private int numOfObjectsToSpawn = 1;
-    private int intervalBetweenDesignedSituations = 9;
-
-    private float speed = 3;
+    private float spawnInterval = 0;
+    private int numOfObjectsToSpawn = 0;
+    private int intervalBetweenDesignedSituations = 0;
+    private float speed = 0;
 
     private List<GameObject> obstacles;
     private List<GameObject> handDesignedSituations;
@@ -20,8 +19,18 @@ public class ObstacleSpawner : MonoBehaviour {
 
 	public AudioSource levelMusic = null;
 
+    public void SetDefaultValues()
+    {
+        spawnInterval = 1.2f;
+        numOfObjectsToSpawn = 1;
+        intervalBetweenDesignedSituations = 9;
+        speed = 3;
+    }
+
     void Initialize()
     {
+        SetDefaultValues();
+
         // List the Obstacles
         obstacles = new List<GameObject>();
         GameObject[] obsts = Resources.LoadAll<GameObject>("Obstacles");
