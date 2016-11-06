@@ -70,6 +70,9 @@ public class GameOver : MonoBehaviour {
 		winImage.enabled = false;
 		looseImage.enabled = false;
 
+		eggLeftLoose = false;
+		eggRightLoose = false;
+
 		transform.position = startPosition.position;
 	}
 	

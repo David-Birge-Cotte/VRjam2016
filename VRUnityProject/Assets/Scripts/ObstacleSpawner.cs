@@ -90,6 +90,8 @@ public class ObstacleSpawner : MonoBehaviour {
 
         Finish();
         yield return new WaitForEndOfFrame();
+
+		GameObject.FindObjectOfType<GameOver> ().SpawnEnd ();
     }
 
     void Finish()
