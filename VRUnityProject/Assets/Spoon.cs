@@ -23,23 +23,29 @@ public class Spoon : MonoBehaviour
 	public void Restart ()
 	{
 		UnityEngine.Debug.Log ("restart " + name);
+			
+		StartCoroutine (RePosEgg ());
+	}
+
+
+	IEnumerator RePosEgg (){
 		eggStart.gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 		eggStart.gameObject.GetComponent<Rigidbody> ().isKinematic = true;
+		eggStart.GetComponent<Eggs> ().meshCollider.isTrigger = true;
 		eggStart.gameObject.GetComponent<Rigidbody> ().velocity = Vector3.zero;
 
-		eggStart.GetComponent<Eggs> ().meshCollider.isTrigger = true;
+		yield return new WaitForSeconds (0.1f);
+
 		eggStart.GetComponent<Eggs> ().SetLayer (8);
-		eggStart.GetComponent<Eggs> ().meshCollider.isTrigger = false;
+
+		yield return new WaitForSeconds (0.1f);
 
 		eggStart.parent = startParent;
 		eggStart.localPosition = startPosition;
 		eggStart.localRotation = startQuaternion;
 
-
+		eggStart.GetComponent<Eggs> ().meshCollider.isTrigger = false;
 	}
-
-
-
 
 
 	// Use this for initialization
