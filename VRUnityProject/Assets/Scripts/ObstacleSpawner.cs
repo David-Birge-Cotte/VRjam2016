@@ -18,6 +18,8 @@ public class ObstacleSpawner : MonoBehaviour {
 
 	public List<AudioClip> godQuotes;
 
+	public AudioSource levelMusic = null;
+
     void Initialize()
     {
         // List the Obstacles
@@ -48,6 +50,8 @@ public class ObstacleSpawner : MonoBehaviour {
         Initialize();
         StartCoroutine("Spawn");
         StartCoroutine("SuperSale");
+
+		levelMusic.Play ();
     }
 
 	public void EndGame(bool win)
