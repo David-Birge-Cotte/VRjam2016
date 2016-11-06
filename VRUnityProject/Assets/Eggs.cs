@@ -4,7 +4,7 @@ using System.Collections;
 public class Eggs : MonoBehaviour {
 
     private AudioClip Break;
-    private AudioClip Fries;
+    private AudioClip SND_Cloud_Collid_1;
 	public MeshCollider meshCollider = null; 
 
 	public int index;
@@ -13,7 +13,7 @@ public class Eggs : MonoBehaviour {
 	void Start ()
     {
         Break = Resources.Load<AudioClip>("FX/SND_Egg_Breaks");
-        Fries = Resources.Load<AudioClip>("FX/SND_Egg_Fries");
+        SND_Cloud_Collid_1 = Resources.Load<AudioClip>("FX/SND_Cloud_Collid_1");
     }
 	
 	// Update is called once per frame
@@ -37,7 +37,7 @@ public class Eggs : MonoBehaviour {
 		{
 			GameObject.FindObjectOfType<GameOver> ().LooseEgg (index);
 			SetLayer (9);
-			Camera.main.GetComponent<AudioSource>().PlayOneShot(Fries);
+			Camera.main.GetComponent<AudioSource>().PlayOneShot(SND_Cloud_Collid_1);
 		}
 	}
 
