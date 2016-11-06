@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 public class MoveToParadise : MonoBehaviour {
 
 	public Transform character;
@@ -16,6 +16,11 @@ public class MoveToParadise : MonoBehaviour {
 
 	public GameObject firstSpot;
 	public GameObject secondPost;
+
+	private bool waitToBeRelaunch = false;
+
+	public List<AudioClip> restartAudio;
+
 
 	// Use this for initialization
 	public void StartToMove () 
@@ -56,6 +61,18 @@ public class MoveToParadise : MonoBehaviour {
 			hasLaunchIntro = true;
 			StartCoroutine (PlayIntro());
 		}
+
+		if (waitToBeRelaunch == true) 
+		{
+			waitToBeRelaunch = false;
+
+			StartCoroutine (RestartGame());
+		}
+	}
+
+	public void EndGame(bool win)
+	{
+		waitToBeRelaunch = true;
 	}
 
 	IEnumerator PlayIntro ()
@@ -74,5 +91,27 @@ public class MoveToParadise : MonoBehaviour {
 		yield return new WaitForSeconds (2f);
 
 		GameObject.FindObjectOfType<ObstacleSpawner> ().StartGame ();
+	}
+
+
+	IEnumerator RestartGame()
+	{
+		GameObject.FindObjectOfType<GameOver> ().RestartGame ();
+
+		SpoonTraquer[] spoonTraquers = GameObject.FindObjectsOfType<SpoonTraquer> ();
+		foreach (SpoonTraquer sp in spoonTraquers)
+			sp.Restart ();
+
+		UnityEngine.Assertions.Assert.IsTrue (restartAudio.Count > 0, "No audio clips restart quotes detected im " + name);
+		Camera.main.GetComponent<AudioSource>().PlayOneShot(restartAudio[Random.Range(0, restartAudio.Count)]);
+
+		yield return new WaitForSeconds (2f);
+
+		foreach (SpoonTraquer sp in spoonTraquers)
+			sp.ReRelease ();
+
+		yield return new WaitForSeconds (1f);
+
+		GameObject.FindObjectOfType<ObstacleSpawner> ().ReStartGame ();
 	}
 }

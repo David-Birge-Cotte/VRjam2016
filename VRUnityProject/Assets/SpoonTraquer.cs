@@ -8,7 +8,7 @@ public class SpoonTraquer : MonoBehaviour {
 
 	public Transform content;
 
-	//public SteamVR_RenderModel deviceModel;
+	public SteamVR_RenderModel deviceModel;
 
 	public void AddEgg ()
 	{
@@ -17,12 +17,12 @@ public class SpoonTraquer : MonoBehaviour {
 
 
 	void Update ()
-	{/*
+	{
 		var device = SteamVR_Controller.Input((int)deviceModel.index);
 		if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) 
 		{
 			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
-		}*/
+		}
 
 		if (Input.GetKeyDown(KeyCode.S))
 			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
@@ -45,6 +45,17 @@ public class SpoonTraquer : MonoBehaviour {
 
 		yield return null;
 
+		spoon.GetComponent<Spoon> ().Release ();
+	}
+
+
+	public void Restart()
+	{
+		spoon.GetComponent<Spoon> ().Restart ();
+	}
+
+	public void ReRelease()
+	{
 		spoon.GetComponent<Spoon> ().Release ();
 	}
 }
