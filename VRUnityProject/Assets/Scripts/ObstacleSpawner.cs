@@ -78,11 +78,11 @@ public class ObstacleSpawner : MonoBehaviour {
         //Debug.Log("Niveau 2");
 
         yield return new WaitForSeconds(10);
-        ChangeSettings(6, 0.7f, 3, 7);
+        ChangeSettings(6, 0.7f, 4, 7);
         //Debug.Log("Niveau 3");
 
         yield return new WaitForSeconds(10);
-        ChangeSettings(7, 0.5f, 4, 5);
+        ChangeSettings(7, 0.5f, 5, 5);
         //Debug.Log("Niveau 4");
 
         yield return new WaitForSeconds(10);
@@ -98,7 +98,6 @@ public class ObstacleSpawner : MonoBehaviour {
     {
         StopAllCoroutines();
     }
-
 
     void ChangeSettings(int speed, float spawnInterval, int numOfObjects, int intervalBetweenSituations)
     {
