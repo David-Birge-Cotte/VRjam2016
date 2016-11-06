@@ -16,6 +16,10 @@ public class ObstacleSpawner : MonoBehaviour {
 
     private bool bSpawn = true;
 
+	public List<AudioClip> godQuotes;
+
+	public AudioSource levelMusic = null;
+
     void Initialize()
     {
         // List the Obstacles
@@ -36,12 +40,30 @@ public class ObstacleSpawner : MonoBehaviour {
 
     }
 
+	public void ReStartGame()
+	{
+		StartGame ();
+	}
+
 	public void StartGame ()
     {
         Initialize();
         StartCoroutine("Spawn");
         StartCoroutine("SuperSale");
+
+		levelMusic.Play ();
     }
+
+	public void EndGame(bool win)
+	{
+		StopCoroutine("Spawn");
+		StopCoroutine("SuperSale");
+
+		Obstacle[] obstacles = GameObject.FindObjectsOfType<Obstacle> ();
+
+		foreach (Obstacle o in obstacles)
+			GameObject.Destroy (o.gameObject);
+	}
 
     IEnumerator SuperSale()
     {
@@ -110,6 +132,9 @@ public class ObstacleSpawner : MonoBehaviour {
                 Vector3 spawnPos = transform.position;
                 GameObject instantiatedObstacle = Instantiate(handDesignedSituations[handDesignedSitu], spawnPos, Quaternion.identity) as GameObject;
                 instantiatedObstacle.GetComponent<Obstacle>().speed = speed;
+
+				UnityEngine.Assertions.Assert.IsTrue (godQuotes.Count > 0, "No audio clips god quotes detected im " + name);
+				Camera.main.GetComponent<AudioSource>().PlayOneShot(godQuotes[Random.Range(0, godQuotes.Count)]);
             }
             else
             {
