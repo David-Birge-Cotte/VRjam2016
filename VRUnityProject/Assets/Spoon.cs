@@ -11,9 +11,9 @@ public class Spoon : MonoBehaviour
 
 	public void Release ()
 	{
-		startPosition = transform.localPosition;
-		startQuaternion = transform.localRotation;
-		startParent = transform.parent;
+		startPosition = eggStart.localPosition;
+		startQuaternion = eggStart.localRotation;
+		startParent = eggStart.parent;
 
 
 		eggStart.parent = null;
@@ -22,11 +22,12 @@ public class Spoon : MonoBehaviour
 
 	public void Restart ()
 	{
+		UnityEngine.Debug.Log ("restart " + name);
 		eggStart.gameObject.GetComponent<Rigidbody> ().isKinematic = true;
 
-		transform.parent = startParent;
-		transform.localPosition = startPosition;
-		transform.localRotation = startQuaternion;
+		eggStart.parent = startParent;
+		eggStart.localPosition = startPosition;
+		eggStart.localRotation = startQuaternion;
 
 		eggStart.GetComponent<Eggs> ().SetLayer (8);
 	}

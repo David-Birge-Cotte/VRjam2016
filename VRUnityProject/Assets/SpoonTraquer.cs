@@ -21,6 +21,7 @@ public class SpoonTraquer : MonoBehaviour {
 		var device = SteamVR_Controller.Input((int)deviceModel.index);
 		if (device.GetTouchDown (SteamVR_Controller.ButtonMask.Trigger)) 
 		{
+			Debug.Log ("Trigger");
 			GameObject.FindObjectOfType<MoveToParadise> ().StartIntro ();
 		}
 
