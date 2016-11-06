@@ -22,14 +22,26 @@ public class MoveToParadise : MonoBehaviour {
 	public List<AudioClip> restartAudio;
 
 
-	// Use this for initialization
-	public void StartToMove () 
+    // Use this for initialization
+    public void StartToMove () 
 	{
 		startTime = Time.time;
 		startPosition = character.position;
 		hastomove = true;
 	}
-	
+
+    void Start()
+    {
+        
+    }
+
+
+    void SkipDialogue(Object sender, ClickedEventArgs e)
+    {
+        StopAllCoroutines();
+        StartToMove();
+    }
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -97,8 +109,10 @@ public class MoveToParadise : MonoBehaviour {
 	IEnumerator RestartGame()
 	{
 		GameObject.FindObjectOfType<GameOver> ().RestartGame ();
+        GameObject.FindObjectOfType<ObstacleSpawner>().SetDefaultValues();
 
-		SpoonTraquer[] spoonTraquers = GameObject.FindObjectsOfType<SpoonTraquer> ();
+
+        SpoonTraquer[] spoonTraquers = GameObject.FindObjectsOfType<SpoonTraquer> ();
 		foreach (SpoonTraquer sp in spoonTraquers)
 			sp.Restart ();
 
