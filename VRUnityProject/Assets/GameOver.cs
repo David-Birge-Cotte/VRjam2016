@@ -36,7 +36,8 @@ public class GameOver : MonoBehaviour {
 	}
 
 	public void SpawnEnd () {
-		End ((eggLeftLoose == false || eggRightLoose == false));
+		//End ((eggLeftLoose == false || eggRightLoose == false));
+		End(true);
 	}
 
 	// Use this for initialization
@@ -54,7 +55,7 @@ public class GameOver : MonoBehaviour {
 		winImage.enabled = win;
 		looseImage.enabled = !win;
 		hastomove = true;
-
+		startTime = Time.time;
         // Move to black room ?
         ///GameObject.Find("VR character").transform.position = new Vector3(67, 0, 0);
         //Debug.Log("Moved the character to" + GameObject.Find("VR character").transform.position);

@@ -15,7 +15,7 @@ public class Obstacle : MonoBehaviour {
         life = 0;
     }
 
-	void Update ()
+	void FixedUpdate ()
     {
         Move(-Vector3.right);
         life += Time.deltaTime;
