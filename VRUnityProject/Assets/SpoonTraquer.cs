@@ -33,6 +33,7 @@ public class SpoonTraquer : MonoBehaviour {
 	// Use this for initialization
 	IEnumerator StartEgg () 
 	{
+		Debug.Log ("STQRT EGG");
 		yield return new WaitForSeconds (1f);
 
 		spoon.transform.parent				= attach.transform;
